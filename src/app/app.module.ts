@@ -5,18 +5,21 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { PasswordStrengthComponent } from './password-strength/password-strength.component';
+import { PasswordStrengthChecker } from './lib/passwordStrengthChecker';
+import { PasswordRuleComponent } from './password-rule/password-rule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PasswordStrengthComponent
+    PasswordStrengthComponent,
+    PasswordRuleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PasswordStrengthChecker],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

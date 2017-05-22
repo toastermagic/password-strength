@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PasswordStrengthChecker, PasswordRule } from '../lib/passwordStrengthChecker';
 
 @Component({
   selector: 'app-password-strength',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./password-strength.component.css']
 })
 export class PasswordStrengthComponent implements OnInit {
+  message = '';
+  password: string;
 
-  constructor() { }
+  constructor(private checker: PasswordStrengthChecker) { }
 
   ngOnInit() {
+    this.checkRules('');
   }
 
+  checkRules(event) {
+    this.checker.PasswordRules.forEach((r: PasswordRule) => {
+      r.Pass = r.Test(event);
+    });
+
+    this.message = this.checker.PasswordRules.every((r: PasswordRule) => {
+      return r.Pass;
+    }) ? 'Good' : 'Not Good';
+  }
 }
