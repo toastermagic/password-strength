@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { PasswordStrengthComponent } from './password-strength/password-strength.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PasswordStrengthComponent
   ],
   imports: [
     BrowserModule,
